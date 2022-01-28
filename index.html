@@ -17,110 +17,125 @@
 
 <body>
     <div class="position-absolute top-50 start-50 translate-middle">
-        <div class="card" style="width: 50rem;">
-            <div class="bg-light p-2">
-                <h5 class="card-title">Payment form example</h5>
-            </div>
-            <div class="alert alert-danger m-3" role="alert">
-                Some fields are missing
-            </div>
-            <div class="d-flex justify-content-around">
-                <div class="input-group mb-3 m-3">
-                    <span class="input-group-text bg-light" id="basic-addon1">Card #</span>
-                    <input type="text" class="form-control" placeholder="XXXXXXXXXXXXX" aria-label="Username"
-                        aria-describedby="basic-addon1">
+        <form id="paymentForm">
+            <div class="card" style="width: 50rem;">
+                <div class="bg-light p-2">
+                    <h5 class="card-title">Payment form example</h5>
                 </div>
-                <div class="input-group mb-3 m-3">
-                    <span class="input-group-text bg-light">CVC #</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                        placeholder="0000">
+                <div class="alert alert-danger m-3 d-none" role="alert" id="errorAlert">
+                    Some fields are missing
                 </div>
-                <div class="input-group mb-3 m-3">
-                    <span class="input-group-text bg-light">Amount $</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                        placeholder="0000">
-                </div>
-            </div>
-            <div class="d-flex justify-content-around">
-                <div class="input-group mb-3 m-3">
-                    <span class="input-group-text bg-light" id="basic-addon1">First Name</span>
-                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3 m-3">
-                    <span class="input-group-text bg-light" id="basic-addon1">Last Name</span>
-                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-            </div>
-            <div class="row">
+
+                <!-- Card, CVC, Amount -->
                 <div class="d-flex justify-content-around">
-                    <div class="col-5 p-3">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text bg-light" id="basic-addon1">City</span>
-                            <input type="text" class="form-control" aria-label="Username"
-                                aria-describedby="basic-addon1">
-                        </div>
-
+                    <div class="input-group mb-3 m-3">
+                        <span class="input-group-text bg-light" id="basic-addon1">Card #</span>
+                        <input type="text" class="form-control" placeholder="XXXXXXXXXXXXX" aria-label="Username"
+                            aria-describedby="basic-addon1" id="card" name="card" maxlength="16">
                     </div>
-
-                    <div class="col p-3">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">State</label>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>Pick a state</option>
-                                <option value="1">blabla</option>
-                                <option value="2">bla bla bla</option>
-                                <option value="3">blaaaaa</option>
-                            </select>
-                        </div>
+                    <div class="input-group mb-3 m-3">
+                        <span class="input-group-text bg-light">CVC #</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            placeholder="0000" id="cvc" name="cvc" >
                     </div>
-                    <div class="col p-3">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Postal Code</span>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                        </div>
+                    <div class="input-group mb-3 m-3">
+                        <span class="input-group-text bg-light">Amount $</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            placeholder="0000" id="amount" name="amount">
                     </div>
-
                 </div>
+
+                <!-- First Name, Last Name -->
+                <div class="d-flex justify-content-around">
+                    <div class="input-group mb-3 m-3">
+                        <span class="input-group-text bg-light" >First Name</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" id="firstName" name="firstName">
+                    </div>
+                    <div class="input-group mb-3 m-3">
+                        <span class="input-group-text bg-light">Last Name</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" id="lastName" name="lastName">
+                    </div>
+                </div>
+
+                <!-- City, State, Postal Code -->
+                <div class="row">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-5 p-3">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-light" for="city" >City</span>
+                                <input type="text" class="form-control" aria-label="Username"
+                                    aria-describedby="basic-addon1" id="city" name="city">
+                            </div>
+
+                        </div>
+
+                        <div class="col p-3">
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="stateTree">State</label>
+                                <select class="form-select" id="stateTree" name="stateTree">
+                                    <option value="" selected>Pick a state</option>
+                                    <option value="1">Santiago</option>
+                                    <option value="2">Curico</option>
+                                    <option value="3">Viña del Mar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col p-3">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Postal Code</span>
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="postalCode" name="postalCode">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- We accept, Message -->
+                <div class="row">
+                    <div class="col">
+                        <h6 class="px-3"> We accept:</h6>
+                        <div class="input-group px-3">
+                            <div class="input-group-text bg-secondary">
+                                <input class="form-check-input mt-0" type="radio" name="payment" value=""
+                                    aria-label="Radio button for following text input" checked>
+                                <i class="fab fa-cc-mastercard px-2"></i>
+                                <input class="form-check-input mt-0" type="radio" name="payment" value=""
+                                    aria-label="Radio button for following text input">
+                                <i class="fab fa-cc-visa px-2"></i>
+                                <input class="form-check-input mt-0" type="radio" name="payment" value=""
+                                    aria-label="Radio button for following text input">
+                                <i class="fab fa-cc-diners-club px-2"></i>
+                                <input class="form-check-input mt-0" type="radio" name="payment" value=""
+                                    aria-label="Radio button for following text input">
+                                <i class="fab fa-cc-amex px-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="input-group px-3 text">
+
+                            <textarea class="form-control" aria-label="With textarea" id="textArea" name="textArea"></textarea>
+                            <span class="input-group-text">Message</span>
+                        </div>
+                        <div class="d-flex justify-content-start ms-3"><span>
+                                <p class="chico">Add any note here.</p>
+                            </span></div>
+                    </div>
+                </div>
+
+                <!-- Cancelar, Enviar -->
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex justify-content-end bg-light">
+                            <button type="reset" class="btn btn-secondary m-2">Cancelar</button>
+                            <button type="submit" class="btn btn-primary m-2">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="row">
-                <div class="col">
-                    <h6 class="px-3"> We accept:</h6>
-                    <div class="input-group px-3">
-                        <div class="input-group-text bg-secondary">
-                            <input class="form-check-input mt-0" type="radio" value=""
-                                aria-label="Radio button for following text input">
-                            <i class="fab fa-cc-mastercard px-2"></i>
-                            <input class="form-check-input mt-0" type="radio" value=""
-                                aria-label="Radio button for following text input">
-                            <i class="fab fa-cc-visa px-2"></i>
-                            <input class="form-check-input mt-0" type="radio" value=""
-                                aria-label="Radio button for following text input">
-                            <i class="fab fa-cc-diners-club px-2"></i>
-                            <input class="form-check-input mt-0" type="radio" value=""
-                                aria-label="Radio button for following text input">
-                            <i class="fab fa-cc-amex px-2"></i>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col">
-                    <div class="input-group px-3 text">
-                        
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
-                        <span class="input-group-text">Message</span>
-                    </div>
-                    <div class="d-flex justify-content-start ms-3"><span><p class="chico">Add any note here.</p></span></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="d-flex justify-content-end bg-light">
-                        <button type="button" class="btn btn-secondary m-2">Secondary</button>
-                        <button type="button" class="btn btn-primary m-2">Primary</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
 
 
@@ -133,6 +148,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
+    <script src="/app.js"></script>
 </body>
 
 </html>
